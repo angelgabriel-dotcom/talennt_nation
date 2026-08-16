@@ -1,7 +1,7 @@
 import sys
 import datetime
 import time
-
+from ai_service import get_ai_price
 
 red = "\033[31;1m"
 yellow = "\033[33;1m"
@@ -14,10 +14,13 @@ def time_counter(card):
 def logger():
     print(f"{yellow}Welcome To I Sell Everything.com{reset}\n")
     bought = input(f"\n{green}please input what you want to buy please{reset}  ")
+    print(f"{yellow}looking up estimated price for {bought} wait for a sec{reset} ")
+    suggested_price = get_ai_price(bought)
     
 
     while True:
      bill = input(f"\n{green}please input how much you are paying{reset}  ")
+     suggested_price(bill)
      if not bill.isnumeric():
         print(f"{red}Error: only digit's are allowed")
         continue
@@ -46,7 +49,7 @@ def logger():
      value = f"transaction {transaction['id']} | items: {transaction['items']} | quantity: {transaction['quantity']} amount: {transaction['amount']} "
 
     time = datetime.datetime.now()
-    time_format = f"{yellow}=== Transaction Log | {time} ==={reset}"
+    time_format = f"{yellow}=== Transaction Log | {time} You bought ({bought}) | and you paid ${bill}=== {reset}"
     print(time_format)
 
     sys.exit(0)
