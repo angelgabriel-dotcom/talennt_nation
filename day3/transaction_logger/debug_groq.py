@@ -5,7 +5,7 @@ from groq import Groq
 
 print("--- DIAGNOSTIC RUN ---")
 print("Python Executable:", sys.executable)
-print("GROQ_API_KEY set?:", bool(os.environ.get("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")))
+print("GROQ_API_KEY set?:", bool(os.environ.get("")))
 
 try:
     client = Groq()
